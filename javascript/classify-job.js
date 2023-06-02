@@ -22,10 +22,13 @@ fetch(apiUrl, {
             let contentMain=document.createElement('div');
             contentMain.className='content-main';
 
-            let image=document.createElement('img');
-            image.className='image-box img';
-            image.setAttribute('style','display:block;witdh:100%;height:auto');
-            image.src=item.image;
+            let image=document.createElement('div');
+            let img=document.createElement('img');
+            image.className='image-box';
+            img.src=item.image;
+            img.setAttribute('style','width:100%;height:auto;object-fit:contain');
+            image.appendChild(img);
+
 
             let content_box=document.createElement('div');
             content_box.className='content-box';
@@ -65,7 +68,7 @@ fetch(apiUrl, {
             
             //tag들 넘겨받아서 배열이든 뭐든 해서 반복문 써서 출력
             let allElements=document.createElement('div');
-            allElements.setAttribute('style','display:flex; flex-direction:column;justify-content:space-between;height:100%');
+            allElements.setAttribute('style','display:flex; flex:8;flex-direction:column;justify-content:space-between;height:100%');
             content_box.appendChild(nameElement);
             content_box.appendChild(nameEngElement);
             content_box.appendChild(introElement);

@@ -23,9 +23,12 @@ fetch(apiUrl, {
             let contentMain=document.createElement('div');
             contentMain.className='content-main';
 
-            let image=document.createElement('img');
+            let image=document.createElement('div');
+            let img=document.createElement('img');
             image.className='image-box';
-            image.src=item.element.image;
+            img.src=item.element.image;
+            img.setAttribute('style','width:100%;height:auto;object-fit: contain;');
+            image.appendChild(img);
 
             let content_box=document.createElement('div');
             content_box.className='content-box';

@@ -51,7 +51,9 @@
     flex-direction: row;
     flex-grow: 1;
     height: 15%;
-    margin-top: 2%;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    margin-left: 10px;
     align-items: center;
     justify-content: space-between;
 }
@@ -60,7 +62,7 @@
     margin-left: 2%;
 }
 .index-activity-content-date{
-    margin-right: 3px;
+    margin-right: 10px;
     margin-left: 10px;
     color: #979797;
     flex-shrink: 0;

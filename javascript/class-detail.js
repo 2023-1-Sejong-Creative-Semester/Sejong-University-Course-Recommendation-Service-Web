@@ -8,6 +8,7 @@ const apiUrl='http://34.168.80.42:3001/classify/subject/intro';
 //     "c_name": "C프로그래밍및실습"
 // };
 let params = new URLSearchParams(window.location.search);
+let cnt=0;
 let data = {
     "colleage":params.get('colleage')||"*",
     "stack": JSON.parse(params.get('stack'))||"*",
@@ -16,7 +17,6 @@ let data = {
     "department":"*",
     "c_name": params.get('c_name')||"*"
 };
-console.log(data);
 requestData(data);
 
 function requestData(data,eventTarget){
@@ -49,7 +49,7 @@ function requestData(data,eventTarget){
             className.appendChild(classCategoryIntro);
             headerInfo.appendChild(className);
             let jobImage = document.createElement('img');
-            jobImage.setAttribute('style','display:block;height:auto');
+            jobImage.setAttribute('style','display:block;height:auto;margin-right:15px');
             jobImage.className = 'job-image';
             jobImage.src=classInfo.image;
             
@@ -61,28 +61,27 @@ function requestData(data,eventTarget){
                 let tag=document.createElement('div');
                 tag.className='tag';
                 tag.textContent="#"+cateories;
-                // if(cateories==result.category[0]){
-                //     tag.style.borderColor='red';
-                // }
+                if(cnt==0){ 
+                    if(index==0){
+                        tag.style.borderColor='red';
+                    }
+                }
+
                 if(cateories==eventTarget){
                     tag.style.borderColor='red';
                 }
                 contentTag.appendChild(tag);
             })
+            
             let selectedTag=null;
             contentTag.addEventListener('click', function(event) {
                 if (event.target.tagName === 'DIV') {
                     clearData();
-                    // if(selectedTag)
-                    //     selectedTag.setAttribute('style','border-color:red');
+                    cnt++;
                     const clickedCategory = (event.target.textContent).slice(1);
-                    event.target.style.borderColor='red';
                     console.log('Clicked:', clickedCategory);
-                    // selectedTag=event.target;
-                    // data.category=clickedCategory;
                     data.category=clickedCategory;
                     requestData(data,clickedCategory);
-                    
                 }
             });
             headerInfo.appendChild(contentTag);

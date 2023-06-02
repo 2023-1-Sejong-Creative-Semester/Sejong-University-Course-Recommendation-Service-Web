@@ -88,12 +88,7 @@
     float: right;
     display: float;
 }
-.checked {
-    /* 체크된 상태의 스타일 */
-    color: red;
-    font-weight: bold;
-}
-input[type="checkbox"]:checked +label {
-    background-color: red;
-    color: red;
+
+input[type="checkbox"]{
+    accent-color: #952535;
 }
