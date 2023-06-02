@@ -42,7 +42,7 @@ fetch(apiUrl_trend)
                 dataElement.textContent=item.name;
 
                 let logoElement=document.createElement('img');
-                logoElement.setAttribute('style','height: 100%; margin-right: 10%;');
+                logoElement.setAttribute('style','display:block;width:100px;shrink:0');
                 logoElement.src=item.logo;
 
                 dataContainer.appendChild(dataElement);

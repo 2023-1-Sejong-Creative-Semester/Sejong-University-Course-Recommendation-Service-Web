@@ -25,8 +25,7 @@ fetch(apiUrl, {
 
             let image=document.createElement('img');
             image.className='image-box';
-            // image.src=item.element.image;
-            image.src='../image/C++.png';
+            image.src=item.element.image;
 
             let content_box=document.createElement('div');
             content_box.className='content-box';

@@ -36,7 +36,6 @@ function requestData(data,eventTarget){
             const  classNameIntro=document.createElement('h1');
             const classDetailLink = document.querySelector('span');
             
-
             classNameIntro.textContent = classInfo.c_name;
             classDetailLink.textContent = classNameIntro.textContent;
             classNameIntro.style.margin = '0';
@@ -50,8 +49,9 @@ function requestData(data,eventTarget){
             className.appendChild(classCategoryIntro);
             headerInfo.appendChild(className);
             let jobImage = document.createElement('img');
+            jobImage.setAttribute('style','display:block;height:auto');
             jobImage.className = 'job-image';
-            jobImage.src='../Image/C++.png';
+            jobImage.src=classInfo.image;
             
             // jobImage.innerHTML = `<img src="${}" style="height:200px; width:auto;margin: 0 auto;">`;
     
@@ -80,6 +80,7 @@ function requestData(data,eventTarget){
                     console.log('Clicked:', clickedCategory);
                     // selectedTag=event.target;
                     // data.category=clickedCategory;
+                    data.category=clickedCategory;
                     requestData(data,clickedCategory);
                     
                 }

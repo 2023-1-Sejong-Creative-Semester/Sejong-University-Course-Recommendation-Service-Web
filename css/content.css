@@ -41,9 +41,10 @@
     height: 150px;
     margin-left: 5px;
     margin-right: 50px;
-    margin-bottom: 5px;
+    margin-bottom: 13px;
     border-radius: 5px;
     padding: 10px 10px 8px 8px;
+    box-shadow: 4px 4px 5px rgba(212,220,229,.5);
 }
 
 .image-box {

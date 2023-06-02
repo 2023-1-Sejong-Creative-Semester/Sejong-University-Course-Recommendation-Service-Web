@@ -31,7 +31,7 @@
     border: 2px solid #979797;
     border-radius: 10px;
 }
-#search-name{
+.search-name{
     display: block;
     font-size: 30px;
     font-weight: bold;
@@ -88,7 +88,11 @@
     float: right;
     display: float;
 }
-
+.checked {
+    /* 체크된 상태의 스타일 */
+    color: red;
+    font-weight: bold;
+}
 input[type="checkbox"]:checked +label {
     background-color: red;
     color: red;

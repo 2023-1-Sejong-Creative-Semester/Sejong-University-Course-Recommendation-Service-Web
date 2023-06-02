@@ -21,6 +21,7 @@
     background-color: white;
     border-radius: 10px;
     width: 50%;
+    box-shadow: 4px 4px 5px rgba(212,220,229,.5);
 }
 
 .index-activity-title{
@@ -48,19 +49,23 @@
 .index-activity-content{
     display: flex;
     flex-direction: row;
-    height: 12%;
+    flex-grow: 1;
+    height: 15%;
     margin-top: 2%;
     align-items: center;
+    justify-content: space-between;
 }
 .index-activity-content-title{
     width: 75%;
     margin-left: 2%;
 }
 .index-activity-content-date{
-    width: 25%;
-    margin-left: 5%;
+    margin-right: 3px;
+    margin-left: 10px;
     color: #979797;
+    flex-shrink: 0;
 }
+
 
 #index-bottom-container{
     height: 40%;
@@ -73,9 +78,14 @@
     width: 25%;
     background-color: white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 4px 5px rgba(212,220,229,.5);
 }
 #top3-title{
     height: 20%;
+    flex-shrink: 0;
+    display: block;
     padding-top: 20px;
 }
 #top3-date{
@@ -98,6 +108,7 @@
     width: 75%;
     background-color: white;
     border-radius: 10px;
+    box-shadow: 4px 4px 5px rgba(212,220,229,.5);
 }
 #roadmap-container{
     display: grid;
