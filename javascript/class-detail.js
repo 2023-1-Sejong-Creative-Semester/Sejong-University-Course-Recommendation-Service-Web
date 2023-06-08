@@ -1,15 +1,8 @@
 const apiUrl='http://34.168.80.42:3001/classify/subject/intro';
-// let data = {
-//     "colleage":"소프트웨어융합대학",
-//     "stack": "[”C”, “C++”, “Java”]",
-//     "category": "웹 개발",
-//     "semester": "01-01",
-//     "department": "소프트웨어학과",
-//     "c_name": "C프로그래밍및실습"
-// };
+
 let params = new URLSearchParams(window.location.search);
 let cnt=0;
-let data = {
+const data = {
     "colleage":params.get('colleage')||"*",
     "stack": JSON.parse(params.get('stack'))||"*",
     "category":params.get('category')||"*",
@@ -17,6 +10,15 @@ let data = {
     "department":"*",
     "c_name": params.get('c_name')||"*"
 };
+// const data = {
+//     "colleage":params-job.get('colleage')||"*",
+//     "stack": JSON.parse(params-job.get('stack'))||"*",
+//     "category":params-job.get('category')||"*",
+//     "semester": params-job.get('semester')||"*",
+//     "department":"*",
+//     "c_name": params-job.get('c_name')||"*"
+// };
+console.log(data);
 requestData(data);
 
 function requestData(data,eventTarget){
@@ -49,7 +51,9 @@ function requestData(data,eventTarget){
             className.appendChild(classCategoryIntro);
             headerInfo.appendChild(className);
             let jobImage = document.createElement('img');
-            jobImage.setAttribute('style','display:block;height:auto;margin-right:15px');
+            // jobImage.setAttribute('style','display:block;height:auto;margin-right:15px');
+            jobImage.setAttribute('style', 'width:500px;height:auto;object-fit: contain;');
+
             jobImage.className = 'job-image';
             jobImage.src=classInfo.image;
             

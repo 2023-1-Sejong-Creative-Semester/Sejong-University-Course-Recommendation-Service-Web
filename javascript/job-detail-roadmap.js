@@ -3,11 +3,11 @@ const apiUrl='http://34.168.80.42:3001/roadmap/job';
 //     "job": "풀스택 개발자",
 //     "category": "웹 개발"
 // };
-let params = new URLSearchParams(window.location.search);
+let params_job = new URLSearchParams(window.location.search);
 
 let data = {
-    "job": params.get('job')||"*",
-    "category": JSON.parse(params.get('category')||"*")
+    "job": params_job.get('job')||"*",
+    "category": JSON.parse(params_job.get('category')||"*")
 };
 
 fetch(apiUrl, {
