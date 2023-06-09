@@ -1,8 +1,8 @@
 // 체크된 요소들을 그룹별로 저장하기 위한 객체
 let checkedValuesByGroup = {
     colleage: [],
-    category: [],
-    stack: ""
+    category: "",
+    stack: []
 };
 let cnt=-1;
 const data={
@@ -24,7 +24,7 @@ checkboxes.forEach(function (checkbox) {
         if(groupName=='주언어') groupName='stack';
         // 체크 상태인 경우
 
-        if(groupName=="colleage"||groupName=='category'){
+        if(groupName=="colleage"||groupName=='stack'){
             if (this.checked) {
                 // value를 해당 그룹의 배열에 추가
                 checkedValuesByGroup[groupName].push(this.value);
@@ -37,7 +37,7 @@ checkboxes.forEach(function (checkbox) {
             }
             requestData(checkedValuesByGroup);
         }
-        else if(groupName=='stack'){
+        else if(groupName=='category'){
             if (this.checked) {
                 // value를 문자열 그 자체로 추가
                 checkedValuesByGroup[groupName] += checkedValuesByGroup[groupName].length===0 ? this.value: '|'+ this.value ;

@@ -52,7 +52,7 @@ function requestData(data,eventTarget){
             headerInfo.appendChild(className);
             let jobImage = document.createElement('img');
             // jobImage.setAttribute('style','display:block;height:auto;margin-right:15px');
-            jobImage.setAttribute('style', 'width:500px;height:auto;object-fit: contain;');
+            jobImage.setAttribute('style', 'width:500px;height:auto;object-fit: contain; margin-right:20px');
 
             jobImage.className = 'job-image';
             jobImage.src=classInfo.image;

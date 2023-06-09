@@ -9,7 +9,7 @@ const data = {
     "colleage": "*",
     "stack": "*",
     "category": "*",
-    "semester":"*"
+    "semeter":"*"
 };
 requestData(data);
 
@@ -58,9 +58,10 @@ function requestData(data) {
     let postData={
         "colleage":data.colleage||"*",
         "stack": data.stack.length === 0 ? "*" : data.stack,
-        "semester":data.semester||"*",
+        "semeter":data.semester||"*",
         "category":"*"
     }
+    console.log("postData",postData);
     fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -99,7 +100,7 @@ function requestData(data) {
                         "colleage": nameEngElement.textContent,
                         "stack": JSON.stringify(item.element.stack),
                         "category": item.element.category[0],
-                        "semester": item.element.semeter,
+                        "semeter": item.element.semeter,
                         // "department": item.element.department,
                         "c_name": item.element.c_name
                     }
