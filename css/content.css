@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: row;
     background-color: white;
-    height: 150px;
+    min-height: 155px;
     margin-left: 5px;
     margin-right: 50px;
     margin-bottom: 13px;

@@ -31,6 +31,7 @@ function requestData(data,eventTarget){
     })
         .then(response => response.json())
         .then(result => {
+            console.log("result",result);
             const  classInfo=result.element;
             const  header=document.getElementById(`header`);
             const  headerInfo=document.getElementById('header-info');
@@ -94,6 +95,7 @@ function requestData(data,eventTarget){
             
             const classIntroScript=document.getElementById(`job-intro-script`);
             classIntroScript.textContent=classInfo.instruction.long_script;
+            classIntroScript.setAttribute('style','line-height:1.8;padding-left:15px;padding-right:15px');
     
             let datalist=result.element.department;
             const classRoadmapList=document.getElementById(`class-roadmap-list`);

@@ -1,6 +1,6 @@
 // 체크된 요소들을 그룹별로 저장하기 위한 객체
 let checkedValuesByGroup = {
-    colleage: [],
+    colleage: "",
     category: "",
     stack: []
 };
@@ -24,7 +24,7 @@ checkboxes.forEach(function (checkbox) {
         if(groupName=='주언어') groupName='stack';
         // 체크 상태인 경우
 
-        if(groupName=="colleage"||groupName=='stack'){
+        if(groupName=='stack'){
             if (this.checked) {
                 // value를 해당 그룹의 배열에 추가
                 checkedValuesByGroup[groupName].push(this.value);
@@ -37,7 +37,7 @@ checkboxes.forEach(function (checkbox) {
             }
             requestData(checkedValuesByGroup);
         }
-        else if(groupName=='category'){
+        else if(groupName=="colleage"||groupName=='category'){
             if (this.checked) {
                 // value를 문자열 그 자체로 추가
                 checkedValuesByGroup[groupName] += checkedValuesByGroup[groupName].length===0 ? this.value: '|'+ this.value ;
@@ -57,10 +57,11 @@ function requestData(data) {
     const apiUrl = 'http://34.168.80.42:3001/classify/job';
     console.log("data",data);
     let postData = {
-        "colleage": data.colleage.length > 0 ? data.colleage : "*",
+        "colleage": data.colleage.length === 0 ? "*" : data.colleage,
         "stack": data.stack.length === 0 ? "*" : data.stack,
-        "category": data.category.length>0?data.category :"*",
+        "category": data.category.length===0? "*" :data.category,
     };
+    console.log("postData",postData);
 
     fetch(apiUrl, {
         method: 'POST',
@@ -122,12 +123,15 @@ function requestData(data) {
 
                 let content_tag = document.createElement('div');
                 content_tag.className = 'content-tag';
-                item.stack.forEach((stack, index) => {
-                    let tag = document.createElement('div');
-                    tag.className = 'tag';
-                    tag.textContent = "#" + stack;
-                    content_tag.appendChild(tag);
-                })
+                if (item.stack) {
+                    item.stack.forEach((stack, index) => {
+                        let tag = document.createElement('div');
+                        tag.className = 'tag';
+                        tag.textContent = "#" + stack;
+                        content_tag.appendChild(tag);
+                    });
+                }
+                
 
                 //tag들 넘겨받아서 배열이든 뭐든 해서 반복문 써서 출력
                 let allElements = document.createElement('div');
@@ -142,6 +146,9 @@ function requestData(data) {
                 container.appendChild(contentMain);
             });
 
+            if(!result.results.length){
+                container.innerHTML=`<h2>검색된 결과가 없습니다</h2>`;
+            }
 
             function clearData(){
                 let container = document.getElementById(`content-mainpage-job`);

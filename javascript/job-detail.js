@@ -39,9 +39,10 @@ fetch(apiUrls, {
         jobName.appendChild(jobNameIntro);
         jobName.appendChild(jobCategoryIntro);
         headerInfo.appendChild(jobName);
-        let jobImage = document.createElement('div');
+        let jobImage = document.createElement('img');
+        jobImage.setAttribute('style', 'width:500px;height:auto;object-fit: contain; margin-right:20px');
         jobImage.className = 'job-image';
-        jobImage.innerHTML = `<img src="${jobInfo.image}" style="height:200px; width:auto;margin: 0 auto;">`;
+        jobImage.src=jobInfo.image;
 
         let contentTag=document.createElement('div');
         contentTag.className='content-tag';
@@ -61,6 +62,7 @@ fetch(apiUrls, {
         const jobInfoContainer=document.getElementById(`job-info-container`);
         const jobIntroScript=document.getElementById(`job-intro-script`);
         jobIntroScript.textContent=jobInfo.instruction.long_script;
+        jobIntroScript.setAttribute('style','line-height:1.8;padding-left:15px;padding-right:15px');
         
         const courseList=document.getElementById(`bottom-course-list`);
         subject.forEach((item,index)=>{

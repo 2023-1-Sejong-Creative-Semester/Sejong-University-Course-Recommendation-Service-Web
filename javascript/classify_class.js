@@ -9,7 +9,7 @@ const data = {
     "colleage": "*",
     "stack": "*",
     "category": "*",
-    "semeter":"*"
+    "semester":"*"
 };
 requestData(data);
 
@@ -58,7 +58,7 @@ function requestData(data) {
     let postData={
         "colleage":data.colleage||"*",
         "stack": data.stack.length === 0 ? "*" : data.stack,
-        "semeter":data.semester||"*",
+        "semester":data.semester||"*",
         "category":"*"
     }
     console.log("postData",postData);
@@ -74,6 +74,7 @@ function requestData(data) {
             if (cnt != 0) clearData();
 
             console.log("result",result);
+            
             let datalist = result.subject;
             let container = document.getElementById(`content-mainpage-subject`);
 
@@ -140,6 +141,10 @@ function requestData(data) {
                 contentMain.appendChild(content_box);
                 container.appendChild(contentMain);
             });
+
+            if(!result.subject.length){
+                container.innerHTML=`<h2>검색된 결과가 없습니다</h2>`;
+            }
 
             function clearData(){
                 let container = document.getElementById(`content-mainpage-subject`);
