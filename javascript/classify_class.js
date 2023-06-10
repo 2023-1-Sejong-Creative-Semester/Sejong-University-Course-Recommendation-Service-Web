@@ -2,7 +2,7 @@ let checkedValuesByGroup = {
     colleage: "",
     semester:"",
     stack: [],
-    category:"*"
+    category:""
 };
 let cnt=-1;
 const data = {
@@ -18,17 +18,16 @@ checkboxes.forEach(function (checkbox) {
     checkbox.addEventListener('change', function () {
         
         let groupName = this.closest('.search-name').childNodes[0].textContent.trim();
-        if(groupName=='학과') groupName='colleage';
+        if(groupName=='학부') groupName='colleage';
         if(groupName=='학기') groupName='semester';
         if(groupName=='주언어') groupName='stack';
+        if(groupName=='카테고리') groupName='category';
         // 체크 상태인 경우
 
         if(groupName=='stack'){
             if (this.checked) {
-                // value를 해당 그룹의 배열에 추가
                 checkedValuesByGroup[groupName].push(this.value);
             } else {
-                // 체크가 해제된 경우 배열에서 해당 value 제거
                 let index = checkedValuesByGroup[groupName].indexOf(this.value);
                 if (index !== -1) {
                     checkedValuesByGroup[groupName].splice(index, 1);
@@ -36,11 +35,9 @@ checkboxes.forEach(function (checkbox) {
             }
             requestData(checkedValuesByGroup);
         }
-        else if(groupName=='semester'||groupName=='colleage'){
+        else if(groupName=='semester'||groupName=='colleage'||groupName=='category'){
             if (this.checked) {
-                // value를 문자열 그 자체로 추가
                 checkedValuesByGroup[groupName] += checkedValuesByGroup[groupName].length===0 ? this.value: '|'+ this.value ;
-                // checkedValuesByGroup[groupName] = checkedValuesByGroup[groupName].replace(/\|$/, '');
             } else {
                 // 체크가 해제된 경우 문자열에서 해당 value 제거
                 checkedValuesByGroup[groupName] = checkedValuesByGroup[groupName].replace(this.value , '');
@@ -59,7 +56,7 @@ function requestData(data) {
         "colleage":data.colleage||"*",
         "stack": data.stack.length === 0 ? "*" : data.stack,
         "semester":data.semester||"*",
-        "category":"*"
+        "category":data.category||"*"
     }
     console.log("postData",postData);
     fetch(apiUrl, {
