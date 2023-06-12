@@ -16,7 +16,7 @@ requestData(data);
 let checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach(function (checkbox) {
     checkbox.addEventListener('change', function () {
-        
+
         let groupName = this.closest('.search-name').childNodes[0].textContent.trim();
         if(groupName=='학부') groupName='colleage';
         if(groupName=='학기') groupName='semester';
@@ -46,8 +46,11 @@ checkboxes.forEach(function (checkbox) {
             }
             requestData(checkedValuesByGroup);
         }
+
     });
 });
+
+
 
 function requestData(data) {
     const apiUrl = 'http://34.168.80.42:3001/classify/subject';
@@ -58,7 +61,6 @@ function requestData(data) {
         "semester":data.semester||"*",
         "category":data.category||"*"
     }
-    console.log("postData",postData);
     fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -70,8 +72,8 @@ function requestData(data) {
         .then(result => {
             if (cnt != 0) clearData();
 
-            console.log("result",result);
-            
+            console.log("result=",result);
+
             let datalist = result.subject;
             let container = document.getElementById(`content-mainpage-subject`);
 
@@ -147,7 +149,8 @@ function requestData(data) {
                 let container = document.getElementById(`content-mainpage-subject`);
                 container.innerHTML=``;
             }
-
+            
+            
         })
         .catch(error => {
             console.error('Error:', error);

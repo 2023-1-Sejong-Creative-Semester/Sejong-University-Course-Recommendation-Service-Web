@@ -55,13 +55,11 @@ checkboxes.forEach(function (checkbox) {
 function requestData(data) {
     cnt++;
     const apiUrl = 'http://34.168.80.42:3001/classify/job';
-    console.log("data",data);
     let postData = {
         "colleage": data.colleage.length === 0 ? "*" : data.colleage,
         "stack": data.stack.length === 0 ? "*" : data.stack,
         "category": data.category.length===0? "*" :data.category,
     };
-    console.log("postData",postData);
 
     fetch(apiUrl, {
         method: 'POST',
@@ -74,8 +72,7 @@ function requestData(data) {
         .then(result => {
             if (cnt != 0) clearData();
 
-            console.log("postData=", postData);
-            console.log("REsult",result);
+            console.log("result",result);
             let datalist = result.results;
             // console.log("datalist=",datalist);
 
